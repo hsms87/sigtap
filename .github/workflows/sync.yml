@@ -1,0 +1,54 @@
+name: Sync SIGTAP
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Baixar competências
+        run: |
+          mkdir -p tabelas
+          BASE="ftp://ftp2.datasus.gov.br/pub/sistemas/tup/downloads/"
+          LISTA=$(curl -s --ftp-skip-pasv-ip "$BASE" \
+            | grep -o 'TabelaUnificada_[0-9]\{6\}_v[0-9]*\.zip' | sort -u)
+          for ARQ in $(echo "$LISTA" | tail -6); do
+            [ -f "tabelas/$ARQ" ] || {
+              echo "Baixando $ARQ"
+              curl --ftp-skip-pasv-ip -o "tabelas/$ARQ" "$BASE$ARQ"
+            }
+          done
+          cd tabelas && ls -1 *.zip | sort | head -n -6 | xargs -r rm -f
+
+      - name: Gerar README
+        run: |
+          {
+            echo "# Tabela Unificada SIGTAP"
+            echo
+            echo "Espelho automático do FTP do DATASUS."
+            echo
+            echo "| Arquivo | Competência | Tamanho | Download |"
+            echo "|---|---|---|---|"
+            for A in $(ls -1 tabelas/*.zip | sort -r); do
+              N=$(basename "$A")
+              C=$(echo "$N" | cut -d_ -f2)
+              T=$(du -h "$A" | cut -f1)
+              echo "| \`$N\` | ${C:4:2}/${C:0:4} | $T | [Baixar](https://github.com/$GITHUB_REPOSITORY/raw/main/tabelas/$N) |"
+            done
+            echo
+            echo "Última verificação: $(TZ=America/Sao_Paulo date '+%d/%m/%Y %H:%M')"
+          } > README.md
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "Sincronização automática"
+          git push
