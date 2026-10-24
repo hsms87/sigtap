@@ -9,6 +9,6 @@ Espelho automático do FTP do DATASUS.
 | `TabelaUnificada_202609_v2610050950.zip` | 09/2026 | 2.1M | [Baixar](https://github.com/hsms87/sigtap/raw/main/tabelas/TabelaUnificada_202609_v2610050950.zip) |
 | `TabelaUnificada_202609_v2609171117.zip` | 09/2026 | 2.1M | [Baixar](https://github.com/hsms87/sigtap/raw/main/tabelas/TabelaUnificada_202609_v2609171117.zip) |
 | `TabelaUnificada_202609_v2609111202.zip` | 09/2026 | 2.1M | [Baixar](https://github.com/hsms87/sigtap/raw/main/tabelas/TabelaUnificada_202609_v2609111202.zip) |
-| `TabelaUnificada_202608_v2608141139.zip` | 08/2026 | 2.1M | [Baixar](https://github.com/hsms87/sigtap/raw/main/tabelas/TabelaUnificada_202608_v2608141139.zip) |
+| `TabelaUnificada_202608_v2610231712.zip` | 08/2026 | 2.1M | [Baixar](https://github.com/hsms87/sigtap/raw/main/tabelas/TabelaUnificada_202608_v2610231712.zip) |
 
-Última verificação: 23/10/2026 09:54
+Última verificação: 24/10/2026 09:17
