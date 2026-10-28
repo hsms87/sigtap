@@ -11,4 +11,4 @@ Espelho automático do FTP do DATASUS.
 | `TabelaUnificada_202609_v2610050950.zip` | 09/2026 | 2.1M | [Baixar](https://github.com/hsms87/sigtap/raw/main/tabelas/TabelaUnificada_202609_v2610050950.zip) |
 | `TabelaUnificada_202609_v2609171117.zip` | 09/2026 | 2.1M | [Baixar](https://github.com/hsms87/sigtap/raw/main/tabelas/TabelaUnificada_202609_v2609171117.zip) |
 
-Última verificação: 27/10/2026 10:41
+Última verificação: 28/10/2026 11:36
